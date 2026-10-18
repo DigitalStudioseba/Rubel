@@ -6,6 +6,7 @@ import { Badge } from "../lightswind/badge";
 import { HangingIdCard } from "../lightswind/HangingIdCard";
 import { AuroraTextEffect } from "../lightswind/aurora-text-effect";
 import { DotPattern } from "../lightswind/dot-pattern";
+import rubelPhoto from "@/assets/rubel.jpg";
 
 export const HeroSection = () => {
   const scrollToSection = (id: string) => {
@@ -177,7 +178,7 @@ export const HeroSection = () => {
                 {/* Profile Photo with Dual Glowing Ring */}
                 <div className="mt-1 relative w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-primary to-purple-400 backdrop-blur-md shadow-2xl border border-white/50 overflow-hidden group">
                   <img 
-                    src="/photos/rubel.jpg" 
+                    src={rubelPhoto} 
                     alt="Mohammad Rubel" 
                     className="w-full h-full object-cover object-top rounded-full filter contrast-105"
                     loading="eager"

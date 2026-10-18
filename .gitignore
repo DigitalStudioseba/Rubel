@@ -23,9 +23,11 @@ dist-ssr/
 *.local
 
 # Sensitive documents & Passport images
-Photos/
+/Photos/
 *passport*
 *Passport*
+!/public/photos/
+!/public/photos/**
 
 # Temporary & Editor files
 .idea/
