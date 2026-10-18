@@ -1,0 +1,105 @@
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+
+export const ProjectsSection = () => {
+  const projects = [
+    {
+      id: 1,
+      title: "PUBG Gameplay Highlights",
+      subtitle: "High-intensity clutch rounds, combat awareness, and tactical weapon execution",
+      link: "#projects",
+      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+      gridClass: "md:col-span-7 h-[420px]",
+    },
+    {
+      id: 2,
+      title: "Battle Royale Strategies",
+      subtitle: "Macro zone predictions, edge-of-circle play, and late-game survival decisions",
+      link: "#projects",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
+      gridClass: "md:col-span-5 h-[420px]",
+    },
+    {
+      id: 3,
+      title: "Tactical Rotations",
+      subtitle: "Vehicle transitions, compound breaching, and map traversal under pressure",
+      link: "#projects",
+      image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80",
+      gridClass: "md:col-span-5 h-[360px]",
+    },
+    {
+      id: 4,
+      title: "Squad Coordination & Practice",
+      subtitle: "Disciplined team callouts, synchronized crossfire setups, and daily reflex drills",
+      link: "#projects",
+      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+      gridClass: "md:col-span-7 h-[360px]",
+    },
+  ];
+
+  return (
+    <section id="projects" className="w-full max-w-7xl mx-auto px-6 py-24">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8 }}
+        className="mb-12 md:mb-16"
+      >
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-center md:text-left">
+          PUBG <span className="text-gradient-primary">Showcase</span>
+        </h2>
+        <p className="text-muted-foreground text-center md:text-left max-w-2xl text-lg">
+          Curated gameplay highlights, tactical battle royale rotations, and squad coordination breakdowns.
+        </p>
+      </motion.div>
+
+      {/* 12-Column Full-Width Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 w-full">
+        {projects.map((project, i) => (
+          <motion.a
+            key={project.id}
+            href={project.link}
+            className={`group relative overflow-hidden rounded-[2.25rem] block shadow-xl border border-foreground/10 ${project.gridClass}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1, duration: 0.6 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {/* Background Image Container */}
+            <div className="absolute inset-0 bg-neutral-950">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100 transform-gpu"
+              />
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Content Overlay */}
+            <div className="absolute inset-0 p-8 flex flex-col justify-end pointer-events-none">
+              <div className="flex items-end justify-between gap-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300 transform-gpu">
+                <div className="z-10 max-w-lg">
+                  <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-tight drop-shadow-md">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm md:text-base font-medium text-white/80 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                    {project.subtitle}
+                  </p>
+                </div>
+                
+                {/* Arrow Action Icon */}
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center shrink-0 opacity-80 group-hover:opacity-100 group-hover:bg-white group-hover:text-black transition-all duration-300 rotate-45 group-hover:rotate-0 z-10 shadow-lg">
+                  <ArrowUpRight className="w-6 h-6 text-white group-hover:text-black transition-colors" />
+                </div>
+              </div>
+            </div>
+          </motion.a>
+        ))}
+      </div>
+    </section>
+  );
+};

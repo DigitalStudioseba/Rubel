@@ -1,0 +1,68 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "npm run watch",
+      "windows": {
+        "command": "npm.cmd run watch"
+      },
+      "label": "Auto Build Watcher (for Live Server)",
+      "detail": "Continuously compiles React into /dist when files are modified",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*building for production.*",
+          "endsPattern": ".*watching for file changes.*"
+        }
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "type": "shell",
+      "command": "npm run dev",
+      "windows": {
+        "command": "npm.cmd run dev"
+      },
+      "label": "Vite Dev Server (Port 8080)",
+      "detail": "Starts Vite development server on http://localhost:8080",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*VITE.*",
+          "endsPattern": ".*ready in.*"
+        }
+      }
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "windows": {
+        "command": "npm.cmd run build"
+      },
+      "problemMatcher": ["$tsc"],
+      "label": "Build Portfolio (npm run build)",
+      "detail": "Compiles TypeScript and bundles portfolio with Vite into /dist",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
